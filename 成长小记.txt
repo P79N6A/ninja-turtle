@@ -1,0 +1,176 @@
+张不二APP:
+  1.MVP模式
+  2.开源库：
+    BASEACTIVITY、图片、视频、拍照、edittext、recyclerView、二维码、地图、IM、ISHARE、IPUSH、IMESSAGE、ZommImageView、图片压缩、图片转二进制工具类
+
+    工具类：检测网络、NFC、SP
+
+
+
+1.ButterKnife绑定onclick
+2.TabLayout+ViewPager的用法
+	1.List<String> tabIndicators;
+      List<Fragment> tabFragments;	
+     2. tabFragments.add(CbDoneFragment.newInstance());
+     3.
+    	public static CbDoneFragment newInstance() {
+        	Bundle args = new Bundle();
+        	CbDoneFragment fragment = new CbDoneFragment();
+        	fragment.setArguments(args);
+        	return fragment;
+    	}
+3.开源框架BaseRecyclerViewAdapterHelper的使用
+	1.在项目的gradle下添加：
+		allprojects {
+       		repositories {
+            ...
+            maven { url "https://jitpack.io" }
+        	}
+    	}
+    2.在module中添加依赖
+    	implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
+    3.代码中使用
+    	1.布局文件中引入RecyclerView
+    	2.编写具体的Item的布局文件
+    	3.编写实体数据类型
+    	4.编写适配器
+    		public class MyAdapter extends BaseQuickAdapter<Model, BaseViewHolder> {
+
+   				public MyAdapter(@LayoutRes int layoutResId, @Nullable List<Model> data) {
+        				super(layoutResId, data);
+  			}
+
+   				@Override
+    			protected void convert(BaseViewHolder helper, Model item) {
+        			//可链式调用赋值
+       			helper.setText(R.id.tv_title, item.getTitle())
+               	.setText(R.id.tv_content, item.getContent())
+                .setImageResource(R.id.iv_img, R.mipmap.ic_launcher);
+
+       			 //获取当前条目position
+        		//int position = helper.getLayoutPosition();
+    			}
+			}
+		5.在activity中使用该适配器
+			MyAdapter adapter = new MyAdapter(R.layout.item,datas);			
+		6.item点击事件和长按事件
+			adapater.setOn..
+				跳转到页面后可以直接加数据：（普通跳转可以不可以来着？？）
+					 startActivity(new Intent(mContext, CbDetailActivity.class)
+                                .putExtra("dataList", (Serializable) getToDoData(type, content))；
+
+		7.item子控件的点击和长按事件
+			1.在adapter的convert方法里通过helper.addOnClickListener（）来绑定子控件的id
+			2.adapter.setOnItemChildClick..
+		8.添加列表加载动画
+			adapter.openLoadAnimation();
+		9.添加头部、尾部
+			adapter.addHeadView(headerView/footerView);
+		10.上拉加载
+			setOnLoadMoreListener(RequestLoadMoreListener)
+		11.下拉刷新、预加载等
+			...
+		12.关于实体类、传数据等
+			1.在adpater的datas这个参数改为获取数据的方法getData(String content);
+			2.实现上述方法(可以结合LitePal)
+				public List<String> datas = new ArrayList<>();
+				datas = DataSupport.limit(200).where(condition).order("cbno asc").find(Model.Class);
+				return datas;
+			3.调用adpter.replaceData(datas)方法来刷新item
+4.litepal修改实体类后未更litepal的版本，导致一直报错。
+
+2019.3.12
+      脑子发抽跟老板怼了一下。主要原因还是做的东西跟不上需求。而老板这个需求实际上是伪需求。（摄像头对准水表自动调节捕捉的屏幕的大小，类似扫描二维码。但是老板不知道背后原理不一样，二维码是有他的特殊性，如果一定要搞，需要涉及到图像识别，机器学习这块。）
+
+      虽然老板提的是伪需求，但是血气方刚的怼回去就太年轻了，以前的书都白看了。。。。
+
+      此处谨记：
+        1.无论如何首先答应下老板（或者客户）的需求
+        2.如果是比较刁钻的需求，尽可能长的争取下时间。
+        3.如果是伪需求，仔细思考老板或者客户想要达到的效果，有什么方式能绕过目前无法实现的方法，达到同样的效果。(分清想要的效果和次要需求)
+            （终归还是看脑子。）
+        4.想清楚新的实现方式之后，就新的方式与老板心情气和的谈。
+
+
+      ImageView的scaleType属性不起作用的原因：
+            应当设置为src而非background
+
+      Camera的使用：
+        takepoto的onPickFromCapture方法可以修改Intent，调用自的Activity继承Camera.PictureCallback来实现拍照页面。主要涉及到serfaceView的使用，图片的保存，压缩，Camera的各种参数如聚焦等的使用。
+
+2019.3.13
+      onNewIntent()机制
+
+      onNewIntent()是用来提高程序效率，避免实例化多个Activity().
+
+      当Actvity的启动模式为singleTask  或者singleInstace时，如果有新的intent要唤醒已经不在栈顶的activity，会调用onNewIntent()方法避免多次创建实例，onNewIntent()方法会在onRestart()之前调用。但是activty在后台可能会被杀死，所以在onCreate()和onNewInten()方法里最好都写上同样的方法。  
+2019.3.14
+      
+      toolBar的定制：
+      1.toolBar的布局文件重复使用
+      2.tooBar的android:textColorPrimary为标题文字颜色，actionMenuTextColor为菜单文字颜色，textColorSecondary估计是除了标题之外的颜色，跟菜单文字的优先级未经过比较，目前未知。app:popupTheme为toolbar的弹出的菜单，在toolbar布局文件中声明后在style中设置。
+      3.toolBar左侧返回按钮的ID为android.R.id.home;
+      4.tooBar左侧返回按钮弹AlertDialog一直出错。弹出dialog后不点点击按钮直接finish了。（？？？）
+
+      侧滑删除item的recyclerview 
+
+2019.3.18
+      1.java服务器增加保存图片的配置文件：
+      
+
+      2.设置摄像头闪光灯:
+        parameters.setFlashMode(parameters.FLASH_MODE_TORCH)/ON/OFF
+      切换前后摄像头：
+        mCamera = Camera.open(0或者1)；0为后置，1为前置。
+
+      3.弹EditText软键盘：
+         InputMethodManager methodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            methodManager.showSoftInput(etNMTabNum,0);
+
+            如果是刚进入页面弹不出来软键盘，可能是因为界面未初始化完毕。此时需要加一个定时器延时弹出。
+                              Timer timer = new Timer();
+                          timer.schedule(new TimerTask()
+                      {
+                    public void run()
+                    {
+                     InputMethodManager inputManager =
+                     (InputMethodManager) top_middle.getContext().getSystemService(
+                        Context.INPUT_METHOD_SERVICE);
+                     inputManager.showSoftInput(top_middle, 0);
+                    }
+                  },
+                   
+                  998);
+      4.EditText软键盘事件（imeOptions响应事件）：
+        a.布局文件里设置类型 android:imeOptions="actionDone"
+        b.activity里设置监听
+          et.setOnEditorActionListener(this);
+
+
+
+      5.bitmap图片相关操作:
+          裁剪：                 bitmap = Bitmap.createBitmap(bitmap, 35, 175, 300, 85);
+          从文件获得：            bitmap = BitmapFactory.decodeFile(result.getImages().get(0).getCompressPath());
+                                （该操作会使得图片取出来之后质量变大）
+          压缩并保存：              核心是  bitmap.compress(Bitmap.CompressFormat.PNG,90,fos)方法
+          ImageView设置背景图片     image.setImageBitmap(bitmap)
+      6.图片放大缩小：自定义的ZoomImageView
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+      
+
+
+
