@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<litepal>
+    <dbname value="TWELVE" />   <!-- 数据库的名字 -->
+    <version value="1" />  <!-- 数据库的版本号 当更新表或字段是修改，整数-->
+
+    <!-- 配置数据库中相应的表-->
+    <list>
+        <!--   <mapping class="com.jx.xjt.bean.RealTimeLocation" />-->
+       </list>
+   </litepal>
