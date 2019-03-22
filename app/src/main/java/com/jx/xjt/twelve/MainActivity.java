@@ -118,15 +118,7 @@ viewPager.setCurrentItem(position);
 
     }
 
-    @Override
-    public void showProgress() {
 
-    }
-
-    @Override
-    public void hideProgress() {
-
-    }
 
 
     private class SectionsPageAdapter extends FragmentPagerAdapter {

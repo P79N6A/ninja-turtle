@@ -22,19 +22,7 @@ protected abstract P createPresenter();
 
     }
 
-    @Override
-    public void showProgress() {
-        if (!getDialog().isShowing()) {
-            getDialog().show();
-        }
-    }
 
-    @Override
-    public void hideProgress() {
-        if (getDialog().isShowing()) {
-            getDialog().dismiss();
-        }
-    }
 
     @Override
     public void onAttach(Context context) {
