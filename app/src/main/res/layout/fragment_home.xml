@@ -1,137 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<LinearLayout
-android:orientation="horizontal"
-android:layout_width="match_parent"
-android:layout_height="0dp"
-android:layout_weight="1"
-    >
-    <TextView
-        android:text="高频模块："
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-<Button
-    android:id="@+id/btn_H4"
-    android:layout_width="0dp"
-    android:layout_weight="1"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:text="二代证"
-    />
-<Button
-    android:id="@+id/btn_H9"
-    android:layout_width="0dp"
-    android:layout_weight="1"
-    android:layout_height="wrap_content"
-    android:text="NFC"
-    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    />
-</LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        >
-        <TextView
-            android:text="超高频模块："
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/btn_U6"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="FM100"
-            />
-        <Button
-            android:id="@+id/btn_U8"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="R2000(LD)"
-            android:layout_gravity="center"
 
-            />
-        <Button
-            android:id="@+id/btn_U9"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="M-500"
-            android:layout_gravity="center"
-
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        >
-        <TextView
-            android:text="条码模块："
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/btn_BD"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="一维"
-            />
-        <Button
-            android:id="@+id/btn_BE"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="二维软解码"
-            android:layout_gravity="center"
-
-            />
-        <Button
-            android:id="@+id/btn_BH"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="二维硬件码"
-            android:layout_gravity="center"
-
-            />
-    </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            >
-            <TextView
-                android:text="摄像头等模块："
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <Button
-                android:id="@+id/btn_CG"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="PSAM卡单"
-                />
-            <Button
-                android:id="@+id/btn_CE"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="GPS+北斗"
-                android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:src="@drawable/beauty"
+            />
 
-                />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_finance"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:drawableTop="@mipmap/ic_cb_settings"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:singleLine="true"
+                android:textColor="#212121"
+                android:textSize="18sp"
+                android:text="张不二金融" />
+
+            <!--<View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="@color/light_grey_1" />-->
+
+            <TextView
+                android:id="@+id/tv_news"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:drawableTop="@mipmap/ic_cb_settings"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:singleLine="true"
+                android:textColor="#212121"
+                android:textSize="18sp"
+                android:text="张不二新闻" />
+
+            <!--<View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="@color/light_grey_1" />-->
+
+            <TextView
+                android:id="@+id/tv_mall"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:drawableTop="@mipmap/ic_cb_settings"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:singleLine="true"
+                android:textColor="#212121"
+                android:textSize="18sp"
+                android:text="张不二商城" />
         </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_plane"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:drawableTop="@mipmap/ic_cb_settings"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:singleLine="true"
+            android:textColor="#212121"
+            android:textSize="18sp"
+            android:text="雷电" />
+
+        <!--<View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/light_grey_1" />-->
+
+        <TextView
+            android:id="@+id/tv_func"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:drawableTop="@mipmap/ic_cb_settings"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:singleLine="true"
+            android:textColor="#212121"
+            android:textSize="18sp"
+            android:text="快速开发" />
+
+        <!--<View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/light_grey_1" />-->
+
+        <TextView
+            android:id="@+id/tv_douyin"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:drawableTop="@mipmap/ic_cb_settings"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:singleLine="true"
+            android:textColor="#212121"
+            android:textSize="18sp"
+            android:text="抖音" />
+    </LinearLayout>
 
 
 

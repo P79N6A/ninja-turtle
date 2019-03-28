@@ -58,7 +58,7 @@ public class MainActivity extends MVPActivity<MainPresenter> implements IMainVie
 
         @Override
     protected void initToolbar(Toolbar toolbar) {
-            toolbar.setTitle("M10模块演示系统");
+            toolbar.setTitle("ninja turtle");
 
       super.initToolbar(toolbar);
     }
