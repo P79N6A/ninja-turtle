@@ -87,7 +87,7 @@
             android:singleLine="true"
             android:textColor="#212121"
             android:textSize="18sp"
-            android:text="雷电" />
+            android:text="游戏" />
 
         <!--<View
             android:layout_width="1px"
