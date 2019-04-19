@@ -1,5 +1,7 @@
 package com.jx.xjt.twelve.fragment;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -9,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -90,6 +93,15 @@ public class HomeFragment extends MVPFragment<HomeFragmentPresenter> implements 
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tv_finance:
+                Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.dialog_test);
+                dialog.show();
+               dialog.setCancelable(true);
+               dialog.setCanceledOnTouchOutside(true);
+                WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
+                params.width = (int) (getActivity().getWindowManager().getDefaultDisplay().getWidth()*0.8);
+                dialog.getWindow().setAttributes(params);
+
                 break;
             case R.id.tv_func:
 
